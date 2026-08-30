@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "npx vercel dev",
     "check": "node scripts/check.mjs",
+    "probe:webmcp": "node scripts/validar-webmcp-browser.mjs",
     "test": "node --test"
   },
   "dependencies": {
