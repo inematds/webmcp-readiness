@@ -97,6 +97,24 @@ body {
 .finding-fail { --finding: #f87171; }
 .finding-info { --finding: #38bdf8; }
 .finding-mark { background: var(--finding); }
+.score-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  min-width: .25rem;
+  border-radius: inherit;
+  transform-origin: left center;
+  transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+.score-pass { background: #34d399; }
+.score-warning { background: #fbbf24; }
+.score-fail { background: #f87171; }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--wm-cyan);
+  outline-offset: 3px;
+}
 .score-gauge {
   background: conic-gradient(var(--gauge-color, #38bdf8) calc(var(--score, 0) * 1%), #263244 0);
 }
@@ -138,6 +156,11 @@ html:not(.dark) svg[role="img"] { filter: saturate(.82) brightness(.96); }
 @media (max-width: 767px) {
   .phase-rail::before { left: 1.2rem; }
   .hero-shell::after { background-size: 20px 20px; }
+}
+@media (min-width: 1024px) {
+  #scanner-layout.report-ready { grid-template-columns: minmax(0, 1fr); }
+  #scanner-layout.report-ready #readiness-shell { grid-column: 1; grid-row: 2; }
+  #scanner-layout.report-ready #scanner-traits { grid-column: 1; grid-row: 3; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

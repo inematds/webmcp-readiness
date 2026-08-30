@@ -1,17 +1,27 @@
 # WebMCP Readiness
 
-Scanner passivo que abre um site público em um Chromium descartável, descobre sinais de WebMCP e entrega uma pontuação acompanhada de evidências e recomendações.
+Scanner passivo que abre um site público em Chromium descartável e entrega um diagnóstico rápido de WebMCP, SEO, GEO e AEO, acompanhado de evidências, correções priorizadas e caminhos de aprofundamento.
 
 ## O que analisa
 
-- contexto seguro e URL final;
-- formulários declarativos com `toolname`;
-- ferramentas expostas por `document.modelContext.getTools()`;
-- nomes, descrições, schemas e anotações;
-- sinais de mutação, confirmação humana, cancelamento e fallback;
-- cabeçalhos de política de permissões.
+- **WebMCP:** ferramentas declarativas e imperativas, schemas, mutações, confirmação humana, cancelamento, fallback e permissões;
+- **SEO:** indexabilidade, title, description, canonical, headings, imagens, links, Open Graph e JSON-LD;
+- **GEO:** identidade da entidade, conteúdo substancial, autoria, atualização, evidências e descoberta pública;
+- **AEO:** perguntas reais, respostas diretas, definições, listas, tabelas e conteúdo extraível;
+- **arquivos públicos:** `robots.txt`, `sitemap.xml` e `llms.txt`.
 
-O scanner não executa ferramentas. O relatório é uma avaliação técnica inicial, não uma certificação de segurança.
+O scan aprofunda apenas a URL informada. O sitemap é inventariado, mas suas páginas não são rastreadas nesta modalidade. O scanner não executa ferramentas WebMCP e não promete indexação, ranking ou citação por IA.
+
+## Relatório
+
+O schema v2 inclui:
+
+- nota geral e quatro notas independentes;
+- evidências aprovadas, alertas e bloqueadores;
+- até 12 correções priorizadas;
+- cursos recomendados no INEMA.CLUB e INEMA PRO;
+- próximos scanners avançados, identificados como planejados nas fases Builder, Integrator, Agent Developer e Expert;
+- exportação integral em JSON.
 
 ## Executar na Vercel
 
@@ -29,6 +39,6 @@ npx vercel deploy --prod
 
 ## Segurança
 
-URLs com credenciais, protocolos diferentes de HTTP/HTTPS e endereços privados são bloqueados. Cada análise usa um novo contexto de navegador, bloqueia downloads e não executa ferramentas WebMCP.
+URLs com credenciais, protocolos diferentes de HTTP/HTTPS e endereços privados são bloqueados. Redirecionamentos dos arquivos públicos são revalidados, as respostas têm limite de tamanho e cada análise usa um novo contexto de navegador.
 
 Projeto associado à [Formação WebMCP](https://inematds.github.io/webmcp-1-formacao/).
