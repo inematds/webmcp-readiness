@@ -1,0 +1,19 @@
+{
+  "name": "webmcp-readiness",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Scanner passivo de prontidão WebMCP para sites públicos.",
+  "scripts": {
+    "dev": "npx vercel dev",
+    "check": "node scripts/check.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@sparticuz/chromium": "149.0.0",
+    "playwright-core": "1.62.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
