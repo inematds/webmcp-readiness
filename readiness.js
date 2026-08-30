@@ -5,6 +5,8 @@ const loadingState = document.querySelector("#readiness-loading");
 const errorState = document.querySelector("#readiness-error");
 const resultState = document.querySelector("#readiness-result");
 const statusRegion = document.querySelector("#readiness-status");
+const urlInput = form?.querySelector("input[name=url]");
+const exampleButtons = [...document.querySelectorAll("[data-example-url]")];
 
 const statePanels = [emptyState, loadingState, errorState, resultState];
 
@@ -157,6 +159,7 @@ function renderReport(report) {
 async function analyze(url) {
   show(loadingState);
   submitButton.disabled = true;
+  exampleButtons.forEach((button) => { button.disabled = true; });
   submitButton.setAttribute("aria-busy", "true");
   statusRegion.textContent = "Abrindo o site em um navegador isolado e reunindo evidências.";
   try {
@@ -174,6 +177,7 @@ async function analyze(url) {
     statusRegion.textContent = `Falha na análise: ${error.message}`;
   } finally {
     submitButton.disabled = false;
+    exampleButtons.forEach((button) => { button.disabled = false; });
     submitButton.removeAttribute("aria-busy");
   }
 }
@@ -184,6 +188,16 @@ form?.addEventListener("submit", (event) => {
   const url = String(data.get("url") || "").trim();
   if (!url) return;
   analyze(url);
+});
+
+exampleButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const url = button.dataset.exampleUrl;
+    if (!url || !urlInput) return;
+    urlInput.value = url;
+    statusRegion.textContent = `Exemplo selecionado: ${url}. Iniciando a análise.`;
+    analyze(url);
+  });
 });
 
 document.querySelector("#download-report")?.addEventListener("click", () => {
@@ -200,7 +214,7 @@ document.querySelector("#download-report")?.addEventListener("click", () => {
 document.querySelector("#new-analysis")?.addEventListener("click", () => {
   document.querySelector("#scanner-layout")?.classList.remove("report-ready");
   show(emptyState);
-  form.querySelector("input[name=url]")?.focus();
+  urlInput?.focus();
 });
 
 window.addEventListener("toolactivated", (event) => {

@@ -109,6 +109,41 @@ body {
 .score-pass { background: #34d399; }
 .score-warning { background: #fbbf24; }
 .score-fail { background: #f87171; }
+.example-list {
+  border-top: 1px solid var(--wm-line);
+  border-bottom: 1px solid var(--wm-line);
+}
+.example-site {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  text-align: left;
+  border-bottom: 1px solid var(--wm-line);
+  transition: color .2s ease, background-color .2s ease;
+}
+.example-site:last-child { border-bottom: 0; }
+.example-site:hover { color: var(--wm-cyan); }
+.example-site:disabled { cursor: wait; opacity: .55; }
+.example-site-copy { min-width: 0; transition: transform .3s cubic-bezier(.22, 1, .36, 1); }
+.example-site:hover .example-site-copy { transform: translateX(.35rem); }
+.example-site-copy strong,
+.example-site-copy span { display: block; }
+.example-site-copy strong { font-size: .9375rem; }
+.example-site-copy span { margin-top: .2rem; color: #aeb8c7; font-size: .8125rem; line-height: 1.45; }
+.example-site-action {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  color: #7dd3fc;
+  font-size: .75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.example-site-action svg { width: 1rem; height: 1rem; transition: transform .3s cubic-bezier(.22, 1, .36, 1); }
+.example-site:hover .example-site-action svg { transform: translateX(.2rem); }
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
@@ -147,6 +182,10 @@ html:not(.dark) .text-emerald-400 { color: #047857; }
 html:not(.dark) .text-blue-400 { color: #1d4ed8; }
 html:not(.dark) .text-purple-400 { color: #6d28d9; }
 html:not(.dark) .text-amber-400 { color: #92400e; }
+html:not(.dark) .example-list,
+html:not(.dark) .example-site { border-color: #d1d5db; }
+html:not(.dark) .example-site-copy span { color: #4b5563; }
+html:not(.dark) .example-site-action { color: #0369a1; }
 html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,.95); }
 html:not(.dark) .hero-shell::before { background: #f8fafc; }
 html:not(.dark) .hero-shell::after { opacity: .16; }
@@ -156,6 +195,7 @@ html:not(.dark) svg[role="img"] { filter: saturate(.82) brightness(.96); }
 @media (max-width: 767px) {
   .phase-rail::before { left: 1.2rem; }
   .hero-shell::after { background-size: 20px 20px; }
+  .example-site { grid-template-columns: 1fr; gap: .5rem; }
 }
 @media (min-width: 1024px) {
   #scanner-layout.report-ready { grid-template-columns: minmax(0, 1fr); }
