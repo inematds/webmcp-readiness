@@ -26,10 +26,10 @@ O schema v2 inclui:
 ## Log mínimo de análises
 
 Cada análise concluída escreve uma linha JSON nos logs da função da Vercel, contendo
-somente a origem normalizada do site e a nota geral:
+somente a origem normalizada do site, a nota geral e as quatro notas por dimensão:
 
 ```json
-{"site":"https://exemplo.com","score":73}
+{"site":"https://exemplo.com","scores":{"geral":73,"webmcp":62,"seo":82,"geo":70,"aeo":76}}
 ```
 
 Caminho, parâmetros da URL, endereço IP, título e conteúdo do relatório não são
