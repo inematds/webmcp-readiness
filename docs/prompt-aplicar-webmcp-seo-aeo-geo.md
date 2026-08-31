@@ -104,7 +104,7 @@ Execute o trabalho de ponta a ponta seguindo estas regras:
 - Não faça push antes de eu autorizar explicitamente.
 - Depois da autorização, publique apenas os arquivos relacionados.
 - Preserve o autor correto dos commits:
-  NeiMaldaner <nei.maldaner2014@gmail.com>
+  inematds <inematds@gmail.com>
 - Aguarde o deploy aparecer no domínio.
 - Confirme que a versão publicada contém as alterações.
 - Execute o scanner:
