@@ -23,6 +23,19 @@ O schema v2 inclui:
 - próximos scanners avançados, identificados como planejados nas fases Builder, Integrator, Agent Developer e Expert;
 - exportação integral em JSON.
 
+## Log mínimo de análises
+
+Cada análise concluída escreve uma linha JSON nos logs da função da Vercel, contendo
+somente a origem normalizada do site e a nota geral:
+
+```json
+{"site":"https://exemplo.com","score":73}
+```
+
+Caminho, parâmetros da URL, endereço IP, título e conteúdo do relatório não são
+registrados. Análises que terminam com erro também não entram no log. A retenção e a
+consulta seguem as configurações de logs do projeto na Vercel.
+
 ## Executar na Vercel
 
 1. Importe este repositório na Vercel, sem selecionar um framework.

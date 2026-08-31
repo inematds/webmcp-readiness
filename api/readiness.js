@@ -1,4 +1,5 @@
 import { analyzeReadiness } from "../lib/readiness.mjs";
+import { recordScanLog } from "../lib/scan-log.mjs";
 
 export const maxDuration = 60;
 
@@ -37,6 +38,7 @@ export default async function handler(request, response) {
   try {
     const body = await readBody(request);
     const report = await analyzeReadiness(String(body.url || ""));
+    recordScanLog(report);
     send(response, 200, { ok: true, report });
   } catch (error) {
     send(response, 400, { ok: false, error: error.message || "Falha inesperada." });
