@@ -15,6 +15,8 @@ function fixture({ llmsFound = false } = {}) {
       hasAbortSignal: true,
       hasFeatureDetection: true,
       hasFallbackLanguage: true,
+      hasOriginTrial: true,
+      staticImperativeTools: 0,
       lang: "pt-BR",
       metaDescription: "Aprenda como preparar aplicações para agentes com WebMCP, segurança, schemas, exemplos práticos e critérios de produção.",
       robotsMeta: "index,follow",
@@ -26,7 +28,7 @@ function fixture({ llmsFound = false } = {}) {
       structuredData: { total: 2, valid: 2, types: ["Organization", "Article", "FAQPage"] },
       content: { wordCount: 1400, paragraphs: 18, sections: 7, lists: 3, tables: 1, citations: 3, definitions: 3, questionHeadings: 4, directAnswers: 4, hasAuthor: true, hasDate: true, hasMain: true }
     },
-    headers: { "permissions-policy": "camera=()" },
+    headers: { "permissions-policy": "tools=(self), camera=()", "origin-agent-cluster": "?1" },
     files: {
       robots: { found: true, status: 200, blocksAll: false, declaresSitemap: true },
       sitemap: { found: true, status: 200, urlCount: 24, lastModifiedCount: 24 },
@@ -44,6 +46,23 @@ test("gera quatro notas, correções, cursos e scanners planejados", () => {
   assert.equal(report.education.length, 3);
   assert.equal(report.advancedScanners.length, 4);
   assert.ok(report.advancedScanners.every((item) => item.status === "planejado"));
+});
+
+test("sinaliza Origin Trial e isolamento de origem ausentes", () => {
+  const input = fixture();
+  input.observed.hasOriginTrial = false;
+  delete input.headers["origin-agent-cluster"];
+  const report = buildDiagnostic(input);
+  const byId = Object.fromEntries(report.categories.webmcp.findings.map((item) => [item.id, item]));
+  assert.equal(byId["origin-trial"].status, "warning");
+  assert.equal(byId["origin-agent-cluster"].status, "warning");
+});
+
+test("Origin-Agent-Cluster ?0 é bloqueador", () => {
+  const input = fixture();
+  input.headers["origin-agent-cluster"] = "?0";
+  const report = buildDiagnostic(input);
+  assert.equal(report.categories.webmcp.findings.find((item) => item.id === "origin-agent-cluster").status, "fail");
 });
 
 test("llms.txt é informativo e não altera a nota GEO", () => {

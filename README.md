@@ -4,13 +4,20 @@ Scanner passivo que abre um site público em Chromium descartável e entrega um 
 
 ## O que analisa
 
-- **WebMCP:** ferramentas declarativas e imperativas, schemas, mutações, confirmação humana, cancelamento, fallback e permissões;
+- **WebMCP:** ferramentas declarativas e imperativas, descoberta estática limitada
+  em scripts próprios, schemas, mutações, confirmação humana, cancelamento,
+  fallback, Origin Trial, `Origin-Agent-Cluster` e permissões;
 - **SEO:** indexabilidade, title, description, canonical, headings, imagens, links, Open Graph e JSON-LD;
 - **GEO:** identidade da entidade, conteúdo substancial, autoria, atualização, evidências e descoberta pública;
 - **AEO:** perguntas reais, respostas diretas, definições, listas, tabelas e conteúdo extraível;
 - **arquivos públicos:** `robots.txt`, `sitemap.xml` e `llms.txt`.
 
-O scan aprofunda apenas a URL informada. O sitemap é inventariado, mas suas páginas não são rastreadas nesta modalidade. O scanner não executa ferramentas WebMCP e não promete indexação, ranking ou citação por IA.
+O scan aprofunda apenas a URL informada. O sitemap é inventariado, mas suas
+páginas não são rastreadas nesta modalidade. O scanner não executa ferramentas
+WebMCP. Ferramentas encontradas em bundles são marcadas como descoberta estática:
+isso comprova que há uma definição legível, não que ela esteja registrada ou
+executável no navegador de todo visitante. O scanner não promete indexação,
+ranking ou citação por IA.
 
 ## Relatório
 
