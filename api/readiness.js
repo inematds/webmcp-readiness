@@ -1,5 +1,6 @@
 import { analyzeReadiness } from "../lib/readiness.mjs";
 import { recordScanLog } from "../lib/scan-log.mjs";
+import { persistScanResult } from "../lib/scan-store.mjs";
 
 export const maxDuration = 60;
 
@@ -38,6 +39,11 @@ export default async function handler(request, response) {
   try {
     const body = await readBody(request);
     const report = await analyzeReadiness(String(body.url || ""));
+    try {
+      await persistScanResult(report);
+    } catch {
+      console.error(JSON.stringify({ event: "scan_storage_error" }));
+    }
     recordScanLog(report);
     send(response, 200, { ok: true, report });
   } catch (error) {

@@ -43,6 +43,26 @@ Caminho, parâmetros da URL, endereço IP, título e conteúdo do relatório nã
 registrados. Análises que terminam com erro também não entram no log. A retenção e a
 consulta seguem as configurações de logs do projeto na Vercel.
 
+## Histórico persistente em Postgres
+
+Quando `DATABASE_URL` está configurada, cada análise concluída também é gravada na
+tabela `scan_results`. O banco armazena somente:
+
+- origem normalizada do site;
+- nota geral;
+- notas WebMCP, SEO, GEO e AEO;
+- data da análise.
+
+Para configurar com Neon Postgres:
+
+1. No projeto da Vercel, abra **Storage** e instale a integração **Neon**.
+2. Crie ou conecte um banco. A integração adicionará `DATABASE_URL` ao projeto.
+3. Execute o conteúdo de `db/schema.sql` uma vez no editor SQL do Neon.
+4. Faça um novo deploy para disponibilizar a variável à função.
+
+Se o banco estiver indisponível, o relatório continua sendo entregue ao usuário e a
+falha é registrada no log operacional sem expor a conexão.
+
 ## Executar na Vercel
 
 1. Importe este repositório na Vercel, sem selecionar um framework.
