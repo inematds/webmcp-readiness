@@ -2,6 +2,16 @@
 
 Scanner passivo que abre um site público em Chromium descartável e entrega um diagnóstico rápido de WebMCP, SEO, GEO e AEO, acompanhado de evidências, correções priorizadas e caminhos de aprofundamento.
 
+## Posicionamento
+
+O WebMCP Readiness é um **projeto independente** do ecossistema INEMA. Ele tem
+repositório, implantação, banco, documentação e ciclo de evolução próprios.
+
+A Formação WebMCP pode utilizá-lo como laboratório e indicar seus relatórios,
+mas o scanner não faz parte do código ou do ciclo de publicação dos cursos.
+Essa separação permite corrigir, testar e publicar o produto sem depender de uma
+nova versão da formação.
+
 ## O que analisa
 
 - **WebMCP:** ferramentas declarativas e imperativas, descoberta estática limitada
@@ -29,6 +39,19 @@ O schema v2 inclui:
 - cursos recomendados no INEMA.CLUB e INEMA PRO;
 - próximos scanners avançados, identificados como planejados nas fases Builder, Integrator, Agent Developer e Expert;
 - exportação integral em JSON.
+
+## Documentação e roadmap
+
+As pesquisas, decisões e propostas de evolução estão organizadas na
+[base de conhecimento do projeto](./docs/README.md). Ela inclui:
+
+- memória e roadmap consolidado;
+- estudo do Semrush AI Visibility;
+- proposta de monitoramento em plataformas de IA;
+- validação runtime WebMCP;
+- estratégia de relevância do INEMA.club;
+- diagnóstico de estabilidade no Vercel;
+- plano do scanner avançado e prompts reutilizáveis.
 
 ## Log mínimo de análises
 
@@ -81,4 +104,5 @@ npx vercel deploy --prod
 
 URLs com credenciais, protocolos diferentes de HTTP/HTTPS e endereços privados são bloqueados. Redirecionamentos dos arquivos públicos são revalidados, as respostas têm limite de tamanho e cada análise usa um novo contexto de navegador.
 
-Projeto associado à [Formação WebMCP](https://inematds.github.io/webmcp-1-formacao/).
+Projeto independente do ecossistema INEMA, utilizado como laboratório pela
+[Formação WebMCP](https://inematds.github.io/webmcp-1-formacao/).
