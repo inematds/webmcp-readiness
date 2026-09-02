@@ -138,19 +138,19 @@ Execute o trabalho de ponta a ponta seguindo estas regras:
 11. Publicação e validação real
 - Não faça push antes de eu autorizar explicitamente.
 - Depois da autorização, publique apenas os arquivos relacionados.
-- Preserve o autor correto dos commits:
-  inematds <inematds@gmail.com>
-- Aguarde o deploy aparecer no domínio.
-- Confirme que a versão publicada contém as alterações.
-- Execute o scanner:
+- O autor dos commits segue a conta GitHub de destino do repositório
+  (default: inematds <inematds@gmail.com>; conferir `git config user.email`).
+- O trabalho termina no `git push`. O deploy é automático e é responsabilidade
+  do proprietário; não consulte nem aguarde o Vercel.
+- Quando o proprietário confirmar que a versão está no ar, execute o scanner:
   POST https://webmcp.inema.pro/api/readiness
   Body JSON: {"url":"[URL_DO_SITE]"}
 - Compare as pontuações antes e depois.
 - Apresente o resultado por categoria: WebMCP, SEO, AEO, GEO e geral.
 - Explique cada warning restante.
 - Não apresente pontuação prevista como se fosse medição real.
-- Após o deploy, confirme no HTML/headers publicados o token first-party, OAC e
-  Permissions-Policy; build local não prova configuração de produção.
+- Com a versão no ar, confirme no HTML/headers publicados o token first-party,
+  OAC e Permissions-Policy; build local não prova configuração de produção.
 - Se a emissão do token exigir conta externa do proprietário, deixe a integração
   pronta e apresente a ação humana exata, sem alegar conclusão.
 

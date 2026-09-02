@@ -70,3 +70,18 @@ test("llms.txt é informativo e não altera a nota GEO", () => {
   const withLlms = buildDiagnostic(fixture({ llmsFound: true }));
   assert.equal(withoutLlms.categories.geo.score, withLlms.categories.geo.score);
 });
+
+test("D1: ferramenta imperativa com schema em string passa na regra schemas", () => {
+  const data = fixture();
+  data.observed.imperativeTools = [{ kind: "imperative", name: "buscar_cursos", description: "Busca cursos públicos pelo tema informado.", inputSchema: '{"type":"object","properties":{"tema":{"type":"string"}}}', annotations: { readOnlyHint: true } }];
+  data.tools = [...data.tools, data.observed.imperativeTools[0]];
+  const report = buildDiagnostic(data);
+  assert.equal(report.findings.find((item) => item.id === "schemas").status, "pass");
+});
+
+test("D3: sitemap com poucos lastmod vira alerta", () => {
+  const data = fixture();
+  data.files.sitemap = { found: true, status: 200, urlCount: 64, lastModifiedCount: 0, sitemapCount: 1 };
+  const report = buildDiagnostic(data);
+  assert.equal(report.findings.find((item) => item.id === "sitemap").status, "warning");
+});
