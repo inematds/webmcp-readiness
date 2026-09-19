@@ -1,0 +1,18 @@
+# WebMCP Readiness
+
+> Scanner passivo de sites públicos, com diagnóstico de WebMCP, SEO, GEO e AEO e evidências para orientar correções.
+
+O scanner analisa a URL informada, inventaria arquivos públicos e procura declarações de ferramentas. Não executa ferramentas WebMCP do site e não rastreia todas as páginas do sitemap. Não garante indexação, ranking ou citação por IA. Este produto não declara uma ferramenta WebMCP própria no navegador. A interface está em português.
+
+## Produto
+
+- [Diagnóstico](https://webmcp.inema.pro/): formulário de análise, relatório e exportação JSON.
+- [Manifesto INEMA](https://webmcp.inema.pro/inema.json): identidade, idioma, acesso e relações entre sistemas.
+- [Sitemap](https://webmcp.inema.pro/sitemap.xml): páginas públicas do produto.
+- [Documentação](https://github.com/inematds/webmcp-readiness/blob/main/README.md): funcionamento e limites.
+
+## Ecossistema
+
+- [Portal INEMA](https://www.inema.club/): cursos, projetos e conhecimento; homes PT/EN/ES.
+- [News](https://news.inema.pro/): notícias em PT/EN/ES.
+- [Eventos](https://eventos.inema.pro/): agenda e páginas em PT/EN/ES.

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "id": "inema.webmcp-readiness",
+  "name": "WebMCP Readiness",
+  "url": "https://webmcp.inema.pro/",
+  "languages": [
+    "pt-BR"
+  ],
+  "access": "public",
+  "description": "Scanner passivo de sites públicos com evidências de WebMCP, SEO, GEO e AEO.",
+  "discovery": {
+    "llms": "https://webmcp.inema.pro/llms.txt",
+    "robots": "https://webmcp.inema.pro/robots.txt",
+    "sitemaps": [
+      "https://webmcp.inema.pro/sitemap.xml"
+    ]
+  },
+  "related_systems": [
+    {
+      "id": "inema.portal",
+      "url": "https://www.inema.club/",
+      "languages": [
+        "pt-BR",
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "inema.news",
+      "url": "https://news.inema.pro/",
+      "languages": [
+        "pt-BR",
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "inema.eventos",
+      "url": "https://eventos.inema.pro/",
+      "languages": [
+        "pt-BR",
+        "en",
+        "es"
+      ]
+    },
+    {
+      "id": "inema.cerebro-vip",
+      "url": "https://cvip.inema.pro/",
+      "access": "subscription"
+    }
+  ],
+  "webmcp": {
+    "status": "not_declared",
+    "runtime_verified": false
+  },
+  "manifest_note": "Manifesto de descoberta próprio do INEMA; não é um registro de ferramentas WebMCP.",
+  "repository": "https://github.com/inematds/webmcp-readiness"
+}

@@ -106,3 +106,7 @@ URLs com credenciais, protocolos diferentes de HTTP/HTTPS e endereços privados 
 
 Projeto independente do ecossistema INEMA, utilizado como laboratório pela
 [Formação WebMCP](https://inematds.github.io/webmcp-1-formacao/).
+
+## Descoberta entre sistemas
+
+Ver [docs/DESCOBERTA-ECOSSISTEMA.md](docs/DESCOBERTA-ECOSSISTEMA.md).
