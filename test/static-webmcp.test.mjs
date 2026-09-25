@@ -21,3 +21,11 @@ test("exige sinais de schema ou annotations próximos ao nome", () => {
   const source = `const item={name:"produto",description:"Um produto comum da vitrine",execute(){}};document.modelContext.registerTool(item);`;
   assert.deepEqual(discoverStaticWebMcpTools(source), []);
 });
+
+
+test("preserva hints atuais sem tratar extensões MCP como annotations WebMCP", () => {
+  const source = `document.modelContext.registerTool({name:"preparar_acao",description:"Prepara ação de teste.",inputSchema:{type:"object"},annotations:{readOnlyHint:false,untrustedContentHint:!0,consequentialHint:true,debugging:false,idempotentHint:true},execute:async()=>({ok:true})});`;
+  assert.deepEqual(discoverStaticWebMcpTools(source)[0].annotations, {
+    readOnlyHint: false, untrustedContentHint: true, consequentialHint: true, debugging: false
+  });
+});

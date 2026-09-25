@@ -206,3 +206,19 @@ automaticamente o binário serverless x86-64 da Vercel.
 - [WebMCP no Chrome](https://developer.chrome.com/docs/ai/webmcp)
 - [Status de implementação por navegador](https://github.com/webmachinelearning/webmcp/blob/main/implementation-status.md)
 - [Especificação WebMCP](https://webmachinelearning.github.io/webmcp/)
+
+
+## Aceite por tarefa — atualização de 24/09/2026
+
+Além da existência e descoberta de ferramentas, o modo futuro de execução controlada deve verificar uma jornada completa em ambiente autorizado:
+
+- Definir estado inicial, pedido, IDs esperados e efeitos permitidos.
+- Encadear consulta, filtro, alteração reversível e consulta do estado final.
+- Conferir que o retorno estruturado corresponde à interface; repetir a chamada para verificar duplicações.
+- Registrar entradas, saídas, duração, erros, cancelamento e alterações parciais.
+- Separar ensaio determinístico de callbacks, automação de controles e avaliação por modelo de IA. Só registrar tokens/custo quando medidos no provedor.
+- Comparar a mesma tarefa e o mesmo estado inicial; não declarar ganho de desempenho apenas por contar ferramentas.
+
+O laboratório da formação em `https://inematds.github.io/webmcp-2-builder/labs/jornada-estudos.html` oferece uma jornada fictícia e reversível. Seu roteiro local não é um agente nem prova suporte nativo.
+
+O scanner passivo permanece sem executar ferramentas. O extrator estático preserva os quatro hints do draft de 17/09/2026 (`readOnlyHint`, `untrustedContentHint`, `consequentialHint`, `debugging`), como indícios heurísticos, não como garantia de comportamento ou autorização. A execução futura não pode confiar somente em `readOnlyHint` para autorizar chamadas.

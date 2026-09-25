@@ -110,3 +110,7 @@ Projeto independente do ecossistema INEMA, utilizado como laboratório pela
 ## Descoberta entre sistemas
 
 Ver [docs/DESCOBERTA-ECOSSISTEMA.md](docs/DESCOBERTA-ECOSSISTEMA.md).
+
+## Atualização 2.2.2
+
+A descoberta estática preserva as quatro annotations do snapshot de 17/09/2026. Hints continuam sendo indícios, sem execução ou prova de segurança. O [plano avançado](docs/plano-scanner-avancado.md#aceite-por-tarefa--atualização-de-24092026) inclui critérios de aceite por tarefa e comparação com resultado final verificável.

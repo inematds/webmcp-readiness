@@ -1,3 +1,4 @@
+| 2026-09-24 | Extrator estático retornava hints de MCP e omitia três annotations atuais de WebMCP | Preservar untrustedContentHint, consequentialHint e debugging; teste de regressão | infra |
 # Changelog de falhas
 
 | data | o que quebrou | menor correção | prompt \| infra |
